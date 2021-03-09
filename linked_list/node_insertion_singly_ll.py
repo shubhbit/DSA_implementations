@@ -39,25 +39,32 @@ class CRUDLinkedList(LinkedList):
         print("Node added at the end")
 
 
+
 if __name__ == "__main__":
     elems = [12, 34, 90, 23, 76]
     linked_list = CRUDLinkedList()
+    print("length of linked_list: ", linked_list.length_iterative_way())
+
     print("printing empty list")
     linked_list.traverse_list()
     for elem in elems:
         print(f"adding {elem}")
         linked_list.insert_a_node_at_end(elem)
     print("printing list after adding 4 elements")
+    print("length of linked_list: ", linked_list.length_iterative_way())
     linked_list.traverse_list()
     print("Inserting 100 at the start")
     linked_list.insert_a_node_at_start(100)
+    print("length of linked_list: ", linked_list.length_iterative_way())
     print("printing list after adding new element at start")
     linked_list.traverse_list()
 
     print("Inserting 500 at the 3rd")
     linked_list.insert_a_node_at(500, 3)
+    print("length of linked_list: ", linked_list.length_iterative_way())
     print("printing list after adding new element at 3rd")
     linked_list.traverse_list()
+    print("printing length of linked list recursive way: ", linked_list.length_recursive_way(linked_list.head))
 
 
 

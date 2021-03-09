@@ -18,7 +18,25 @@ class LinkedList(object):
             print(f"Node: {temp.value}")
             temp = temp.next
 
+    def length_iterative_way(self):
+        """
+        iteratively finds length of a linked list
+        :return: int: length of linked list
+        """
+        length = 0
+        if self.head:
+            temp = self.head
+            length += 1
+            while temp.next:
+                length += 1
+                temp = temp.next
+        return length
 
+    def length_recursive_way(self, node):
+        if not node:
+            return 0
+        else:
+            return 1+ self.length_recursive_way(node.next)
 
 if __name__ == "__main__":
     ll = LinkedList()
