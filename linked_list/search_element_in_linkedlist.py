@@ -5,17 +5,39 @@ class SearchElement(object):
         self.head = head
 
     def search_element_iteratively(self, item):
-        pass
+        temp = self.head
+        while temp:
+            if temp.value == item:
+                return True
+            temp = temp.next
+        return False
 
-    def search_element_recursively(self, item):
-        pass
+    def search_element_recursively(self, head, item):
+        if not head:
+            print("head empty")
+            return False
+        elif head.value == item:
+            print("Matched")
+            return True
+        else:
+            print("calling again")
+            return self.search_element_recursively(head.next, item)
 
 if __name__ == "__main__":
+    elems = [12, 34, 90, 23, 76]
     linked_list = CRUDLinkedList()
-    linked_list.insert_a_node_at_end(90)
-    linked_list.insert_a_node_at_end(109)
-    linked_list.insert_a_node_at_end(23)
-    linked_list.insert_a_node_at_end(900)
-
-    print("Searching for item:{0} in linked_list")
-    print()
+    print("length of linked_list: ", linked_list.length_iterative_way())
+    for elem in elems:
+        print(f"adding {elem}")
+        linked_list.insert_a_node_at_end(elem)
+    print("printing list after adding 5 elements")
+    print("length of linked_list: ", linked_list.length_iterative_way())
+    linked_list.traverse_list()
+    search = SearchElement(linked_list.head)
+    search_elem = 90
+    print(f"Searching for item:{search_elem} in linked_list")
+    print(f"Found: {search.search_element_iteratively(search_elem)}")
+    linked_list.traverse_list()
+    for search_elem in [12, 34, 90, 23, 76, 50000]:
+        print(f"Searching for item recursively:{search_elem} in linked_list")
+        print(f"Found: {search.search_element_recursively(search.head, search_elem)}")
