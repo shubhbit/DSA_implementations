@@ -23,6 +23,19 @@ class SearchElement(object):
             print("calling again")
             return self.search_element_recursively(head.next, item)
 
+    def get_nth_element(self, index):
+        init_index = 1
+        temp = self.head
+        while init_index < index and temp:
+            init_index +=1
+            temp = temp.next
+        if temp:
+            return temp.value
+        else:
+            return 0
+
+
+
 if __name__ == "__main__":
     elems = [12, 34, 90, 23, 76]
     linked_list = CRUDLinkedList()
@@ -41,3 +54,9 @@ if __name__ == "__main__":
     for search_elem in [12, 34, 90, 23, 76, 50000]:
         print(f"Searching for item recursively:{search_elem} in linked_list")
         print(f"Found: {search.search_element_recursively(search.head, search_elem)}")
+
+    linked_list.traverse_list()
+
+    n = -1
+    print(f"Fining {n}th element")
+    print(search.get_nth_element(n))
