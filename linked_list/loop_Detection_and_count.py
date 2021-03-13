@@ -23,7 +23,20 @@ class LoopDetection(CRUDLinkedList):
             count +=1
             if temp == common_ptr:
                 return count
-        
+
+def is_pelindrome(head):
+    stack = []
+    temp  = head
+    while temp:
+        stack.append(temp.value)
+        temp = temp.next
+
+    temp = head
+    while temp:
+        if temp.value != stack.pop():
+            return False
+        temp = temp.next
+    return True
 
 
 if __name__ == "__main__":
@@ -49,3 +62,16 @@ if __name__ == "__main__":
     print("Detecting a loop in linkedin: ")
     common_ptr = linked_list.detect_loop_floyds_algo()
     print("lenght of loop: ", linked_list.get_length_of_loop(common_ptr))
+    elems = ["R", "A", "D", "A", "R"]
+    linked_list2 = LoopDetection()
+    linked_list2.head = Node(elems[0])
+    node_2 = Node(elems[1])
+    node_3 = Node(elems[2])
+    node_4 = Node(elems[3])
+    node_5 = Node(elems[4])
+    linked_list2.head.next = node_2
+    node_2.next = node_3
+    node_3.next = node_4
+    node_4.next = node_5
+    print("Checking whether pelindrome")
+    print(is_pelindrome(linked_list2.head))
