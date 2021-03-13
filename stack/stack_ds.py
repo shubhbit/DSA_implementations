@@ -9,6 +9,7 @@ class Stack(object):
     def pop(self):
         popped_elem = self.stack.pop()
         print(f"popped out {popped_elem}")
+        return popped_elem
 
     def __str__(self):
         return str(self.stack)
